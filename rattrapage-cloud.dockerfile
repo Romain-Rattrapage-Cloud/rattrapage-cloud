@@ -2,4 +2,4 @@ FROM rattrapage:cloud
 
 WORKDIR rattrapage-cloud-master
 
-RUN ./mvnw spring-boot:run
+CMD ./mvnw spring-boot:run
