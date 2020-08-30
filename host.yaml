@@ -29,7 +29,3 @@ spec:
   ports:
   - port: 8080
     targetPort: 8080
-status:
-  loadBalancer:
-    ingress:
-    - ip: 192.0.2.127
