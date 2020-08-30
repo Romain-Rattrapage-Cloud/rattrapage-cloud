@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: database-site
-        image: rattrapagecloud/host:02
+        image: rattrapagecloud/host:04
 ---
 apiVersion: v1
 kind: Service
@@ -30,5 +30,18 @@ spec:
   - port: 8080
     targetPort: 8080
     nodePort: 30003
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: database-balancer
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    database: web
+  ports:
+  - port: 8080
+    targetPort: 8080
 
 

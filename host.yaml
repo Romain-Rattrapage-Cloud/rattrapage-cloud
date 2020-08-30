@@ -4,7 +4,7 @@ metadata:
   name: host
   namespace: default
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       host: web
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: host-site
-        image: rattrapagecloud/host:02
+        image: rattrapagecloud/host:04
 ---
 apiVersion: v1
 kind: Service

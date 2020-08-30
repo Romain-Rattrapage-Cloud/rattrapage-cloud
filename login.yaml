@@ -1,34 +1,47 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server
+  name: login
   namespace: default
 spec:
   replicas: 3
   selector:
     matchLabels:
-      server: web
+      login: web
   template:
     metadata:
       labels:
-        server: web
+        login: web
     spec:
       containers:
-      - name: server-site
-        image: rattrapagecloud/host:02
+      - name: login-site
+        image: rattrapagecloud/host:04
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: server-entrypoint
+  name: login-entrypoint
   namespace: default
 spec:
   type: NodePort
   selector:
-    server: web
+    login: web
   ports:
   - port: 8080
     targetPort: 8080
     nodePort: 30002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-balancer
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    login: web
+  ports:
+  - port: 8080
+    targetPort: 8080
 
 

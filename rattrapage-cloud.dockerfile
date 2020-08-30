@@ -1,5 +1,5 @@
-FROM rattrapage:cloud
+FROM rattrapagecloud/host:03
 
-WORKDIR rattrapage-cloud-master
+WORKDIR rattrapage-cloud
 
 CMD ./mvnw spring-boot:run
